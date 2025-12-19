@@ -18,8 +18,8 @@ func _ready() -> void:
 	#Initialize the SDK
 	if not EosCredentials.EosSetup:
 		var init_opts = EOS.Platform.InitializeOptions.new()
-		init_opts.product_name = EosCredentials.PRODUCT_NAME
-		init_opts.product_version = EosCredentials.PRODUCT_ID
+		init_opts.product_name = EosCredentials.PRODUCT_NAME #Replace EosCredentials.PRODUCT_NAME with your actual PRODUCT_NAME from the EOS website
+		init_opts.product_version = EosCredentials.PRODUCT_ID #Replace EosCredentials.PRODUCT_ID with your actual PRODUCT_ID from the EOS website
 	
 		var init_results = EOS.Platform.PlatformInterface.initialize(init_opts)
 		if init_results != EOS.Result.Success:
@@ -31,12 +31,12 @@ func _ready() -> void:
 	
 		# Create EOS platform
 		var create_opts = EOS.Platform.CreateOptions.new()
-		create_opts.product_id = EosCredentials.PRODUCT_ID
-		create_opts.sandbox_id = EosCredentials.SANDBOX_ID
-		create_opts.deployment_id = EosCredentials.DEPLOYMENT_ID
-		create_opts.client_id = EosCredentials.CLIENT_ID
-		create_opts.client_secret = EosCredentials.CLIENT_SECRET
-		create_opts.encryption_key = EosCredentials.ENCRYPTION_KEY
+		create_opts.product_id = EosCredentials.PRODUCT_ID #Replace EosCredentials.PRODUCT_ID with your actual PRODUCT_ID from the EOS website
+		create_opts.sandbox_id = EosCredentials.SANDBOX_ID #Replace EosCredentials.SANDBOX_ID with your actual SANDBOX_ID from the EOS website
+		create_opts.deployment_id = EosCredentials.DEPLOYMENT_ID #Replace EosCredentials.DEPLOYMENT_ID with your actual DEPLOYMENT_ID from the EOS website
+		create_opts.client_id = EosCredentials.CLIENT_ID #Replace EosCredentials.CLIENT_ID with your actual CLIENT_ID from the EOS website
+		create_opts.client_secret = EosCredentials.CLIENT_SECRET #Replace EosCredentials.CLIENT_SECRET with your actual CLIENT_SECRET from the EOS website
+		create_opts.encryption_key = EosCredentials.ENCRYPTION_KEY #Replace EosCredentials.ENCRYPTION_KEY with your any string of 64 numbers
 	
 		var _create_results = 0
 		_create_results = EOS.Platform.PlatformInterface.create(create_opts)
