@@ -9,6 +9,7 @@ extends Node2D
 var local_user_id = ""
 var is_server = false
 var peer_user_id = 0
+var EosSetup = false
 
 var local_lobby: HLobby
 
@@ -16,7 +17,7 @@ func _ready() -> void:
 	display.text = "Starting"
 	
 	#Initialize the SDK
-	if not EosCredentials.EosSetup:
+	if not EosSetup:
 		var init_opts = EOS.Platform.InitializeOptions.new()
 		init_opts.product_name = EosCredentials.PRODUCT_NAME #Replace EosCredentials.PRODUCT_NAME with your actual PRODUCT_NAME from the EOS website
 		init_opts.product_version = EosCredentials.PRODUCT_ID #Replace EosCredentials.PRODUCT_ID with your actual PRODUCT_ID from the EOS website
@@ -56,7 +57,7 @@ func _ready() -> void:
 		peer.peer_disconnected.connect(_on_peer_disconnected)
 	
 		await HAuth.login_anonymous_async("User")
-		EosCredentials.EosSetup = true
+		EosSetup = true
 		back_button.visible = true
 	else:
 		peer.peer_connected.connect(_on_peer_connected)
